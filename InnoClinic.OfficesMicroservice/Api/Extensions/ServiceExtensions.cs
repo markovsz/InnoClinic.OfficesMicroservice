@@ -3,6 +3,9 @@ using Domain.Abstractions.QueryRepositories;
 using Infrastructure.Repositories;
 using Infrastructure.Settings;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 
 namespace Api.Extensions
 {
@@ -10,6 +13,8 @@ namespace Api.Extensions
     {
         public static void ConfigureDb(this IServiceCollection services, IConfiguration configuration)
         {
+            BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
+
             services.Configure<OfficesDbSettings>(
                 configuration.GetSection(nameof(OfficesDbSettings)));
             services.AddSingleton<IOfficesDbSettings>(provider =>
