@@ -2,8 +2,11 @@
 {
     public class Office : BaseEntity
     {
-        public string Address { get; set; }
         public Guid PhotoId { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string HouseNumber { get; set; }
+        public string OfficeNumber { get; set; }
         public string RegistryPhoneNumber { get; set; }
         public bool IsActive { get; set; }
     }
