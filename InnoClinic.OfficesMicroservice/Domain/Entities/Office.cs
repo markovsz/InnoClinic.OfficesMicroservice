@@ -8,6 +8,6 @@
         public string HouseNumber { get; set; }
         public string OfficeNumber { get; set; }
         public string RegistryPhoneNumber { get; set; }
-        public bool IsActive { get; set; }
+        public string Status { get; set; }
     }
 }
