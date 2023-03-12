@@ -1,21 +1,27 @@
 ﻿using Application.Abstractions.Messaging;
-using MediatR;
+using Domain.Enums;
 
 namespace Application.Commands.CreateOffice
 {
     public class CreateOfficeCommand : ICommand<Guid>
     {
-        public string Address { get; set; }
         public Guid PhotoId { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string HouseNumber { get; set; }
+        public string OfficeNumber { get; set; }
         public string RegistryPhoneNumber { get; set; }
-        public bool IsActive { get; set; }
+        public string Status { get; set; }
 
-        public CreateOfficeCommand(string Address, Guid PhotoId, string RegistryPhoneNumber, bool IsActive)
+        public CreateOfficeCommand(Guid photoId, string city, string street, string houseNumber, string officeNumber, string registryPhoneNumber, string status)
         {
-            this.Address = Address;
-            this.PhotoId = PhotoId;
-            this.RegistryPhoneNumber = RegistryPhoneNumber;
-            this.IsActive = IsActive;
+            PhotoId = photoId;
+            City = city;
+            Street = street;
+            HouseNumber = houseNumber;
+            OfficeNumber = officeNumber;
+            RegistryPhoneNumber = registryPhoneNumber;
+            Status = status;
         }
     }
 }

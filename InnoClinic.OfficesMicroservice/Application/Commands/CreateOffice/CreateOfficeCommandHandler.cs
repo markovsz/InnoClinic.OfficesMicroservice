@@ -2,7 +2,6 @@
 using AutoMapper;
 using Domain.Abstractions.CommandRepositories;
 using Domain.Entities;
-using MediatR;
 
 namespace Application.Commands.CreateOffice
 {
