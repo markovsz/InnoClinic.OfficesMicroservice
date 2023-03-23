@@ -10,7 +10,7 @@ builder.Services.ConfigureRepositories();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddControllers();
 builder.Services.ConfigureMediatR();
-builder.Services.AddControllers();
+builder.Services.ConfigureValidators();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();

@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Application.Behaviors;
+using Infrastructure.Validators;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace Application
@@ -10,6 +13,8 @@ namespace Application
             services.AddMediatR(config =>
             {
                 config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+                config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(CommandValidationBehavior<,>), ServiceLifetime.Scoped);
+                config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(QueryValidationBehavior<,>), ServiceLifetime.Scoped);
                 config.Lifetime = ServiceLifetime.Scoped;
             });
         }

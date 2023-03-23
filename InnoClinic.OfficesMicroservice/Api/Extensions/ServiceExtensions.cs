@@ -1,5 +1,6 @@
 ﻿using Domain.Abstractions.CommandRepositories;
 using Domain.Abstractions.QueryRepositories;
+using FluentValidation;
 using Infrastructure.Repositories;
 using Infrastructure.Settings;
 using Microsoft.Extensions.Options;
@@ -25,6 +26,11 @@ namespace Api.Extensions
         {
             services.AddScoped<IReadOnlyOfficesRepository, OfficesRepository>();
             services.AddScoped<IReadWriteOfficesRepository, OfficesRepository>();
+        }
+        
+        public static void ConfigureValidators(this IServiceCollection services)
+        {
+            services.AddValidatorsFromAssembly(Application.AssemblyReference.Assembly);
         }
     }
 }
