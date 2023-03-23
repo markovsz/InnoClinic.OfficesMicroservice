@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Application.Shared;
+using MediatR;
 
 namespace Application.Abstractions.Messaging
 {
@@ -6,7 +7,7 @@ namespace Application.Abstractions.Messaging
     {
     }
 
-    public interface ICommand : IRequest
+    public interface ICommand : IRequest<Result>
     {
     }
 }

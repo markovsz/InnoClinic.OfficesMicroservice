@@ -1,9 +1,10 @@
 ﻿using Application.Abstractions.Messaging;
+using Application.Shared;
 using Domain.Abstractions.CommandRepositories;
 
 namespace Application.Commands.ChangeOfficeStatus
 {
-    public class ChangeOfficeStatusCommandHandler : ICommandHandler<ChangeOfficeStatusCommand>
+    public class ChangeOfficeStatusCommandHandler : ICommandHandler<ChangeOfficeStatusCommand, Result>
     {
         private IReadWriteOfficesRepository _officesRepository;
         public ChangeOfficeStatusCommandHandler(IReadWriteOfficesRepository officesRepository)
@@ -11,11 +12,12 @@ namespace Application.Commands.ChangeOfficeStatus
             _officesRepository = officesRepository;
         }
 
-        public async Task Handle(ChangeOfficeStatusCommand request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(ChangeOfficeStatusCommand request, CancellationToken cancellationToken)
         {
             var office = await _officesRepository.GetByIdAsync(request.Id);
             office.Status = request.Status;
             await _officesRepository.UpdateAsync(office);
+            return new Result();
         }
     }
 }

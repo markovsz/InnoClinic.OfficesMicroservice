@@ -1,9 +1,10 @@
 ﻿using Application.Abstractions.Messaging;
+using Application.Shared;
 using System.Runtime.Serialization;
 
 namespace Application.Commands.UpdateOffice
 {
-    public class UpdateOfficeCommand : ICommand
+    public class UpdateOfficeCommand : ICommand<Result>
     {
         [IgnoreDataMember]
         public Guid Id { get; set; }
