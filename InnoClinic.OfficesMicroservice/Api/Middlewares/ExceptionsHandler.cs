@@ -27,6 +27,10 @@ namespace Api.Middlewares
             {
                 await HandleExceptionAsync(context, ex.Message, HttpStatusCode.BadRequest);
             }
+            catch (EntityNotFoundException ex)
+            {
+                await HandleExceptionAsync(context, ex.Message, HttpStatusCode.NotFound);
+            }
             catch (Exception)
             {
                 await HandleExceptionAsync(context, "internal server error", HttpStatusCode.InternalServerError);
