@@ -1,4 +1,5 @@
 using Api.Extensions;
+using Api.Middlewares;
 using Application;
 using Infrastructure;
 
@@ -21,6 +22,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionsHandler>();
 
 app.UseHttpsRedirection();
 
