@@ -13,7 +13,7 @@ namespace Api.Controllers
     [ApiController]
     public class OfficesController : ControllerBase
     {
-        private IMediator _mediator;
+        private readonly IMediator _mediator;
 
         public OfficesController(IMediator mediator) 
         { 

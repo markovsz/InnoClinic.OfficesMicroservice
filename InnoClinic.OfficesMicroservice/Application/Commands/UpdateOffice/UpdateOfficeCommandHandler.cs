@@ -9,8 +9,8 @@ namespace Application.Commands.UpdateOffice
 {
     public class UpdateOfficeCommandHandler : ICommandHandler<UpdateOfficeCommand, Result>
     {
-        private IReadWriteOfficesRepository _officesRepository;
-        private IMapper _mapper;
+        private readonly IReadWriteOfficesRepository _officesRepository;
+        private readonly IMapper _mapper;
         public UpdateOfficeCommandHandler(IReadWriteOfficesRepository officesRepository, IMapper mapper)
         {
             _officesRepository = officesRepository;

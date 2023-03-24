@@ -7,7 +7,7 @@ namespace Application.Commands.ChangeOfficeStatus
 {
     public class ChangeOfficeStatusCommandHandler : ICommandHandler<ChangeOfficeStatusCommand, Result>
     {
-        private IReadWriteOfficesRepository _officesRepository;
+        private readonly IReadWriteOfficesRepository _officesRepository;
         public ChangeOfficeStatusCommandHandler(IReadWriteOfficesRepository officesRepository)
         {
             _officesRepository = officesRepository;

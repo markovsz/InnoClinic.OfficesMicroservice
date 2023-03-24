@@ -7,8 +7,8 @@ namespace Application.Queries.GetOffices
 {
     public class GetOfficesQueryHandler : IQueryHandler<GetOfficesQuery, OfficesResponse>
     {
-        private IReadOnlyOfficesRepository _officesRepository;
-        private IMapper _mapper;
+        private readonly IReadOnlyOfficesRepository _officesRepository;
+        private readonly IMapper _mapper;
 
         public GetOfficesQueryHandler(IReadOnlyOfficesRepository officesRepository, IMapper mapper) 
         {

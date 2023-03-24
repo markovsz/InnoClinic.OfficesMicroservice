@@ -7,8 +7,8 @@ namespace Application.Commands.CreateOffice
 {
     public class CreateOfficeCommandHandler : ICommandHandler<CreateOfficeCommand, Guid>
     {
-        private IReadWriteOfficesRepository _officesRepository;
-        private IMapper _mapper;
+        private readonly IReadWriteOfficesRepository _officesRepository;
+        private readonly IMapper _mapper;
 
         public CreateOfficeCommandHandler(IReadWriteOfficesRepository officesRepository, IMapper mapper)
         {
