@@ -1,9 +1,10 @@
 ﻿using Api.Enums;
-﻿using Application.Commands.ChangeOfficeStatus;
+using Application.Commands.ChangeOfficeStatus;
 using Application.Commands.CreateOffice;
 using Application.Commands.UpdateOffice;
 using Application.Queries.GetOfficeById;
 using Application.Queries.GetOffices;
+using Application.Queries.GetOfficesByIds;
 using Domain.RequestParameters;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -17,7 +18,7 @@ namespace Api.Controllers
     {
         private readonly IMediator _mediator;
 
-        public OfficesController(IMediator mediator) 
+        public OfficesController(IMediator mediator)
         { 
             _mediator = mediator;
         }
@@ -40,6 +41,13 @@ namespace Api.Controllers
         }
 
         [Authorize(Roles = $"{nameof(UserRole.Patient)},{nameof(UserRole.Doctor)},{nameof(UserRole.Receptionist)}")]
+        [HttpGet("ids")]
+        public async Task<IActionResult> GetOfficesByIdsAsync([FromBody] GetOfficesByIdsQuery officesQuery)
+        {
+            var res = await _mediator.Send(officesQuery);
+            return Ok(res);
+        }
+
         [Authorize(Roles = $"{nameof(UserRole.Patient)},{nameof(UserRole.Doctor)},{nameof(UserRole.Receptionist)}")]
         [HttpGet("office/{id}", Name = "GetOffice")]
         public async Task<IActionResult> GetOfficeByIdAsync(Guid id)
