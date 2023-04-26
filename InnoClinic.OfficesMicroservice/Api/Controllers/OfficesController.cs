@@ -1,3 +1,4 @@
+﻿using Api.Enums;
 ﻿using Application.Commands.ChangeOfficeStatus;
 using Application.Commands.CreateOffice;
 using Application.Commands.UpdateOffice;
@@ -5,6 +6,7 @@ using Application.Queries.GetOfficeById;
 using Application.Queries.GetOffices;
 using Domain.RequestParameters;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -20,6 +22,7 @@ namespace Api.Controllers
             _mediator = mediator;
         }
 
+        [Authorize(Roles = nameof(UserRole.Receptionist))]
         [HttpPost]
         public async Task<IActionResult> CreateOfficeAsync([FromBody] CreateOfficeCommand createCommand)
         {
@@ -27,6 +30,7 @@ namespace Api.Controllers
             return CreatedAtRoute("GetOffice", new { id = res }, res);
         }
 
+        [Authorize(Roles = $"{nameof(UserRole.Patient)},{nameof(UserRole.Doctor)},{nameof(UserRole.Receptionist)}")]
         [HttpGet("list")]
         public async Task<IActionResult> GetOfficesAsync([FromQuery] OfficeParameters parameters)
         {
@@ -35,6 +39,8 @@ namespace Api.Controllers
             return Ok(res);
         }
 
+        [Authorize(Roles = $"{nameof(UserRole.Patient)},{nameof(UserRole.Doctor)},{nameof(UserRole.Receptionist)}")]
+        [Authorize(Roles = $"{nameof(UserRole.Patient)},{nameof(UserRole.Doctor)},{nameof(UserRole.Receptionist)}")]
         [HttpGet("office/{id}", Name = "GetOffice")]
         public async Task<IActionResult> GetOfficeByIdAsync(Guid id)
         {
@@ -43,6 +49,7 @@ namespace Api.Controllers
             return Ok(res);
         }
 
+        [Authorize(Roles = $"{nameof(UserRole.Receptionist)}")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateOfficeAsync(Guid id, [FromBody] UpdateOfficeCommand updateCommand)
         {
@@ -51,6 +58,7 @@ namespace Api.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = $"{nameof(UserRole.Receptionist)}")]
         [HttpPut("{id}/status")]
         public async Task<IActionResult> ChangeOfficeStatusAsync(Guid id, [FromBody] ChangeOfficeStatusCommand changeStatusCommand)
         {
