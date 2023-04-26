@@ -19,7 +19,7 @@ namespace Application.Queries.GetOffices
         public async Task<OfficesResponse> Handle(GetOfficesQuery request, CancellationToken cancellationToken)
         {
             var offices = await _officesRepository.GetAllAsync();
-            var mappedOffices = _mapper.Map<IEnumerable<OfficeResponse>>(offices);
+            var mappedOffices = _mapper.Map<IEnumerable<OfficeAddressResponse>>(offices);
             var officesResponse = new OfficesResponse() 
             { 
                 Offices = mappedOffices

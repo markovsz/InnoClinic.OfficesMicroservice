@@ -1,9 +1,7 @@
-﻿using Domain.Entities;
-
-namespace Application.Queries.Responses
+﻿namespace Application.Queries.Responses
 {
     public class OfficesResponse
     {
-        public IEnumerable<OfficeResponse> Offices { get; set; }
+        public IEnumerable<OfficeAddressResponse> Offices { get; set; }
     }
 }

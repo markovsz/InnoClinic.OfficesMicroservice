@@ -13,6 +13,7 @@ namespace Infrastructure
         {
             CreateMap<CreateOfficeCommand, Office>();
             CreateMap<Office, OfficeResponse>();
+            CreateMap<Office, OfficeAddressResponse>();
             CreateMap<UpdateOfficeCommand, Office>();
         }
     }
