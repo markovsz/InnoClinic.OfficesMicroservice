@@ -3,12 +3,12 @@ using Application.Queries.Responses;
 
 namespace Application.Queries.GetOfficeById
 {
-    public class GetOfficeByIdQuery : IQuery<OfficeResponse>
+    public class GetOfficeByIdQuery : GetOfficeByIdModel, IQuery<OfficeResponse>
     {
         public Guid Id { get; set; }
         public GetOfficeByIdQuery(Guid id)
+            : base(id)
         {
-            Id = id;
         }
     }
 }
