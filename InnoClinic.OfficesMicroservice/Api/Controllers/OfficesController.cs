@@ -41,7 +41,7 @@ namespace Api.Controllers
         }
 
         [Authorize(Roles = $"{nameof(UserRole.Patient)},{nameof(UserRole.Doctor)},{nameof(UserRole.Receptionist)}")]
-        [HttpGet("ids")]
+        [HttpPost("ids")]
         public async Task<IActionResult> GetOfficesByIdsAsync([FromBody] GetOfficesByIdsQuery officesQuery)
         {
             var res = await _mediator.Send(officesQuery);
