@@ -1,5 +1,6 @@
 ﻿using Application.Abstractions.Messaging;
-using Application.Queries.Responses;
+using InnoClinic.SharedModels.DTOs.Offices.Incoming.Queries;
+using InnoClinic.SharedModels.DTOs.Offices.Outgoing;
 
 namespace Application.Queries.GetOfficeById
 {

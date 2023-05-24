@@ -1,5 +1,6 @@
 ﻿using Application.Abstractions.Messaging;
 using Application.Shared;
+using InnoClinic.SharedModels.DTOs.Offices.Incoming.Commands;
 using System.Runtime.Serialization;
 
 namespace Application.Commands.UpdateOffice

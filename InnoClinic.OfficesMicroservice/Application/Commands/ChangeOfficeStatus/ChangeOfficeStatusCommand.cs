@@ -1,5 +1,6 @@
 ﻿using Application.Abstractions.Messaging;
 using Application.Shared;
+using InnoClinic.SharedModels.DTOs.Offices.Incoming.Commands;
 
 namespace Application.Commands.ChangeOfficeStatus
 {

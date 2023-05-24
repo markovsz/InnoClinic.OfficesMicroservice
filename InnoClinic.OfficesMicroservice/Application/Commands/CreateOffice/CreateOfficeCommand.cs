@@ -1,4 +1,5 @@
 ﻿using Application.Abstractions.Messaging;
+using InnoClinic.SharedModels.DTOs.Offices.Incoming.Commands;
 
 namespace Application.Commands.CreateOffice
 {
