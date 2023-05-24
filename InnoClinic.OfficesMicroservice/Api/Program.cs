@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.ConfigureDb(builder.Configuration);
 builder.Services.ConfigureRepositories();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.ConfigureAuthentication(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.ConfigureMediatR();
 builder.Services.ConfigureValidators();
@@ -26,6 +27,8 @@ if (app.Environment.IsDevelopment())
 app.UseMiddleware<ExceptionsHandler>();
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

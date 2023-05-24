@@ -1,9 +1,8 @@
 ﻿using Application.Commands.CreateOffice;
 using Application.Commands.UpdateOffice;
-using Application.Queries.Responses;
 using AutoMapper;
 using Domain.Entities;
-using Domain.Enums;
+using InnoClinic.SharedModels.DTOs.Offices.Outgoing;
 
 namespace Infrastructure
 {
@@ -13,6 +12,7 @@ namespace Infrastructure
         {
             CreateMap<CreateOfficeCommand, Office>();
             CreateMap<Office, OfficeResponse>();
+            CreateMap<Office, OfficeAddressResponse>();
             CreateMap<UpdateOfficeCommand, Office>();
         }
     }

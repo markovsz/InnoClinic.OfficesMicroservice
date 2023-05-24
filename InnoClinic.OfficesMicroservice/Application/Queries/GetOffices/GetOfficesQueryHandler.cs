@@ -1,7 +1,7 @@
 ﻿using Application.Abstractions.Messaging;
-using Application.Queries.Responses;
 using AutoMapper;
 using Domain.Abstractions.QueryRepositories;
+using InnoClinic.SharedModels.DTOs.Offices.Outgoing;
 
 namespace Application.Queries.GetOffices
 {
@@ -19,7 +19,7 @@ namespace Application.Queries.GetOffices
         public async Task<OfficesResponse> Handle(GetOfficesQuery request, CancellationToken cancellationToken)
         {
             var offices = await _officesRepository.GetAllAsync();
-            var mappedOffices = _mapper.Map<IEnumerable<OfficeResponse>>(offices);
+            var mappedOffices = _mapper.Map<IEnumerable<OfficeAddressResponse>>(offices);
             var officesResponse = new OfficesResponse() 
             { 
                 Offices = mappedOffices

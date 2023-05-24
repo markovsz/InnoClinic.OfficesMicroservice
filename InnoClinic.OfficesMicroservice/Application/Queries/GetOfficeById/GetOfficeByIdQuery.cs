@@ -1,14 +1,15 @@
 ﻿using Application.Abstractions.Messaging;
-using Application.Queries.Responses;
+using InnoClinic.SharedModels.DTOs.Offices.Incoming.Queries;
+using InnoClinic.SharedModels.DTOs.Offices.Outgoing;
 
 namespace Application.Queries.GetOfficeById
 {
-    public class GetOfficeByIdQuery : IQuery<OfficeResponse>
+    public class GetOfficeByIdQuery : GetOfficeByIdModel, IQuery<OfficeResponse>
     {
         public Guid Id { get; set; }
         public GetOfficeByIdQuery(Guid id)
+            : base(id)
         {
-            Id = id;
         }
     }
 }

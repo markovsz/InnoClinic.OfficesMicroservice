@@ -1,7 +1,7 @@
 ﻿using Application.Abstractions.Messaging;
-using Application.Queries.Responses;
 using AutoMapper;
 using Domain.Abstractions.QueryRepositories;
+using InnoClinic.SharedModels.DTOs.Offices.Outgoing;
 
 namespace Application.Queries.GetOfficeById
 {

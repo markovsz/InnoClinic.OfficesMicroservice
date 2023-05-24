@@ -1,6 +1,6 @@
 ﻿using Application.Abstractions.Messaging;
-using Application.Queries.Responses;
 using Domain.RequestParameters;
+using InnoClinic.SharedModels.DTOs.Offices.Outgoing;
 
 namespace Application.Queries.GetOffices
 {

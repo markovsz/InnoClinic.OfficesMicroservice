@@ -1,31 +1,15 @@
 ﻿using Application.Abstractions.Messaging;
 using Application.Shared;
+using InnoClinic.SharedModels.DTOs.Offices.Incoming.Commands;
 using System.Runtime.Serialization;
 
 namespace Application.Commands.UpdateOffice
 {
-    public class UpdateOfficeCommand : ICommand<Result>
+    public class UpdateOfficeCommand : UpdateOfficeModel, ICommand<Result>
     {
-        [IgnoreDataMember]
-        public Guid Id { get; set; }
-        public Guid PhotoId { get; set; }
-        public string City { get; set; }
-        public string Street { get; set; }
-        public string HouseNumber { get; set; }
-        public string OfficeNumber { get; set; }
-        public string RegistryPhoneNumber { get; set; }
-        public string Status { get; set; }
-
-        public UpdateOfficeCommand(Guid id, Guid photoId, string city, string street, string houseNumber, string officeNumber, string registryPhoneNumber, string status)
+        public UpdateOfficeCommand(Guid id, string photoUrl, string city, string street, string houseNumber, string officeNumber, string registryPhoneNumber, string status)
+            : base(id, photoUrl, city, street, houseNumber, officeNumber, registryPhoneNumber, status)
         {
-            Id = id;
-            PhotoId = photoId;
-            City = city;
-            Street = street;
-            HouseNumber = houseNumber;
-            OfficeNumber = officeNumber;
-            RegistryPhoneNumber = registryPhoneNumber;
-            Status = status;
         }
     }
 }
