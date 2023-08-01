@@ -1,6 +1,7 @@
 ﻿using Application.Abstractions.Messaging;
 using AutoMapper;
 using Domain.Abstractions.QueryRepositories;
+using Domain.Exceptions;
 using InnoClinic.SharedModels.DTOs.Offices.Outgoing;
 
 namespace Application.Queries.GetOfficeById
@@ -19,6 +20,8 @@ namespace Application.Queries.GetOfficeById
         public async Task<OfficeResponse> Handle(GetOfficeByIdQuery request, CancellationToken cancellationToken)
         {
             var office = await _officesRepository.GetByIdAsync(request.Id);
+            if (office is null)
+                throw new EntityNotFoundException();
             var officeResponse = _mapper.Map<OfficeResponse>(office);
             return officeResponse;
         }
