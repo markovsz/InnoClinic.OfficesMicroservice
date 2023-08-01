@@ -1,6 +1,7 @@
 ﻿using Application.Abstractions.Messaging;
 using AutoMapper;
 using Domain.Abstractions.QueryRepositories;
+using Domain.RequestParameters;
 using InnoClinic.SharedModels.DTOs.Offices.Outgoing;
 
 namespace Application.Queries.GetOffices
@@ -20,9 +21,12 @@ namespace Application.Queries.GetOffices
         {
             var offices = await _officesRepository.GetAllAsync();
             var mappedOffices = _mapper.Map<IEnumerable<OfficeAddressResponse>>(offices);
+            var mappedParameters = _mapper.Map<OfficeParameters>(request);
+            var pagesCount = await _officesRepository.GetPagesCount(mappedParameters);
             var officesResponse = new OfficesResponse() 
             { 
-                Offices = mappedOffices
+                Offices = mappedOffices,
+                PagesCount = pagesCount
             };
             return officesResponse;
         }
